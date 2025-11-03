@@ -42,6 +42,10 @@ end
 
 Sequel.datetime_class = DateTime
 
+get '/test_haml' do
+  haml "%h1 HAML Test\n%p This is a test"
+end
+
 get '/' do
   if authorised?
     redirect '/map'
@@ -228,3 +232,7 @@ post '/unclaim_meshblock/:id' do
     status 200
   end
 end
+
+# Register helpers
+register Sinatra::LoginHelper
+register Sinatra::ViewHelper
