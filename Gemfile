@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.4.10"
+ruby "2.6.10"
 
 gem "sinatra"
 gem "pg"
@@ -15,8 +15,8 @@ group :dev, :test do
   gem "sinatra-contrib"
   gem "rake"
   gem "rack-test"
-  gem "rspec"
-  gem "rspec-mocks"
+  gem "rspec", "~> 3.12"
+  gem "rspec-mocks", "~> 3.12"
   gem 'capybara', '~> 3.0'
   gem "selenium-webdriver"
   gem "byebug"

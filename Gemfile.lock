@@ -14,7 +14,7 @@ GEM
       xpath (~> 3.0)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
-    diff-lcs (1.2.5)
+    diff-lcs (1.6.2)
     dotenv (2.0.2)
     ffi (1.15.5)
     haml (4.0.7)
@@ -40,19 +40,19 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (10.4.2)
-    rspec (3.3.0)
-      rspec-core (~> 3.3.0)
-      rspec-expectations (~> 3.3.0)
-      rspec-mocks (~> 3.3.0)
-    rspec-core (3.3.2)
-      rspec-support (~> 3.3.0)
-    rspec-expectations (3.3.1)
+    rspec (3.13.2)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.6)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.3.0)
-    rspec-mocks (3.3.2)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.7)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.3.0)
-    rspec-support (3.3.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.6)
     rubyzip (1.2.1)
     selenium-webdriver (3.5.1)
       childprocess (~> 0.5)
@@ -91,8 +91,8 @@ DEPENDENCIES
   puma
   rack-test
   rake
-  rspec
-  rspec-mocks
+  rspec (~> 3.12)
+  rspec-mocks (~> 3.12)
   selenium-webdriver
   sequel
   sequel_pg
@@ -101,7 +101,7 @@ DEPENDENCIES
   sinatra-flash
 
 RUBY VERSION
-   ruby 2.4.10p364
+   ruby 2.6.10p210
 
 BUNDLED WITH
    1.17.3
