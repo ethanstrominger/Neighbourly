@@ -18,16 +18,39 @@ After deployment you will need to run `heroku pg:psql < pcode_table.sql` to get 
 
 1. Download the code in this repository (click the "Clone or download" button above, then select "Download ZIP"). Once your download completes, unzip the folder.
 
-2. Open the “Terminal” application on your Mac (or the equivalent application for your Operating System) and navigate to your new Neighbourly folder on the command line by following this instruction:
+2. Open the "Terminal" application on your Mac (or the equivalent application for your Operating System) and navigate to your new Neighbourly folder on the command line by following this instruction:
     - Type `cd`, press the spacebar, then drag and drop the Neighbourly folder onto the command line (like [this example](https://s3-ap-southeast-2.amazonaws.com/neighbourly-data/change-directory-command-line.gif)). It should result in output something like this: `cd /Users/JoeBloggs/Desktop/Neighbourly`
 
-3. Install all project dependencies with the following commands:
+3. Install Ruby 3.1.2 using a version manager (recommended):
+    
+    **Option A: Using RVM (Ruby Version Manager)**
     ```
-    gem install bundler -v 1.15.3
+    # Install RVM if you don't have it
+    curl -sSL https://get.rvm.io | bash -s stable
+    source ~/.rvm/scripts/rvm
+    
+    # Install Ruby 3.1.2
+    rvm install 3.1.2
+    rvm use 3.1.2 --default
+    ```
+    
+    **Option B: Using rbenv**
+    ```
+    # Install rbenv via Homebrew (if you don't have it)
+    brew install rbenv ruby-build
+    
+    # Install Ruby 3.1.2
+    rbenv install 3.1.2
+    rbenv global 3.1.2
+    ```
+
+4. Install all project dependencies with the following commands:
+    ```
+    gem install bundler
     bundle install
     ```
 
-4. Create the database by running the following commands:
+5. Create the database by running the following commands:
     ```
     psql
     CREATE DATABASE neighbourly ENCODING 'UTF_8';
@@ -35,17 +58,25 @@ After deployment you will need to run `heroku pg:psql < pcode_table.sql` to get 
     \q
     ```
 
-5. Run the database migrations with the following commands:
+6. Run the database migrations with the following commands:
     ```
-    DATABASE_URL="postgres://localhost/neighbourly" rake db:migrate
+    DATABASE_URL="postgres://localhost/neighbourly" bundle exec rake db:migrate
     psql neighbourly < pcode_table.sql
     ```
 
-6. Create a new `.env` file in the project root and set the environment variables according to the examples in `.env.example`
-
-7. Finally start the application by running the following command:
+7. Create a new `.env` file in the project root and set the environment variables according to the examples in `.env.example`. At minimum, update these variables:
     ```
-    ruby app.rb
+    SECRET_KEY_BASE="your-generated-secret-key-here"
+    DATABASE_URL="postgres://localhost/neighbourly"
+    ```
+    You can generate a secure secret key by running:
+    ```
+    ruby -e "require 'securerandom'; puts SecureRandom.hex(32)"
+    ```
+
+8. Finally start the application by running the following command:
+    ```
+    bundle exec ruby app.rb
     ```
 
 ### Updating the design to suit your organisation
