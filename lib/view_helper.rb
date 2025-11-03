@@ -25,18 +25,11 @@ module Sinatra
       end
 
       def styled_flash
-        return "" unless flash && !flash.empty?
-        
         flash_html = ""
         flash.each do |type, message|
-          css_class = case type.to_s
-                     when 'notice' then 'alert-success'
-                     when 'error' then 'alert-error'
-                     else 'alert-info'
-                     end
-          flash_html += "<div class='alert #{css_class}'>#{message}</div>"
+          flash_html += "<div class='flash-#{type}'>#{message}</div>"
         end
-        flash_html
+        flash_html.empty? ? "" : flash_html
       end
     end
 

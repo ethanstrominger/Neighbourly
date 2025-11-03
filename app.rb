@@ -1,6 +1,6 @@
 require 'sinatra'
 require "sinatra/reloader" if development?
-require 'byebug' if development?
+require 'debug' if development?
 require 'dotenv'
 require 'haml'
 require 'sequel'
